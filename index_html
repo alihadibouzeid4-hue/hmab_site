@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HMAB | عالم الإبداع الرقمي</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
+
+    <style>
+        /* قسم الـ CSS الخاص بك */
+        body { 
+            font-family: 'Cairo', sans-serif; 
+            background-color: #0f172a; 
+            color: white; 
+            margin: 0;
+        }
+        .hero-bg {
+            background: linear-gradient(rgba(15, 23, 42, 0.85), rgba(15, 23, 42, 0.85)), 
+                        url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1000');
+            background-size: cover;
+            background-position: center;
+        }
+        .whatsapp-btn {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            background: #25d366;
+            width: 65px;
+            height: 65px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 35px;
+            z-index: 9999;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.4);
+            transition: 0.3s;
+        }
+        .whatsapp-btn:hover { transform: scale(1.1); }
+        .card-custom {
+            background: #1e293b;
+            border-radius: 25px;
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: 0.4s;
+        }
+        .card-custom:hover {
+            border-color: #3b82f6;
+            box-shadow: 0 15px 30px rgba(59, 130, 246, 0.2);
+        }
+    </style>
+</head>
+<body>
+
+    <a href="https://wa.me/96179022469" class="whatsapp-btn text-white" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <nav class="p-6 flex justify-between items-center bg-slate-900/90 backdrop-blur-md sticky top-0 z-50">
+        <div class="text-3xl font-black text-blue-500">HMAB</div>
+        <a href="https://wa.me/96179022469" class="bg-blue-600 px-6 py-2 rounded-xl font-bold hover:bg-blue-700 transition">تواصل الآن</a>
+    </nav>
+
+    <header class="h-[80vh] flex flex-col justify-center items-center text-center px-6 hero-bg">
+        <h1 class="text-5xl md:text-7xl font-black mb-6" data-aos="fade-down">مشروع <span class="text-blue-400">HMAB</span></h1>
+        <p class="text-xl text-gray-300 max-w-2xl" data-aos="fade-up">نحول رؤيتك إلى حقيقة رقمية أسطورية من خلال خدماتنا الشاملة.</p>
+    </header>
+
+    <section class="py-20 px-6 max-w-6xl mx-auto">
+        <h2 class="text-4xl font-bold text-center mb-16 underline decoration-blue-500 decoration-4 underline-offset-8">خدماتنا الإبداعية</h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+            
+            <div class="card-custom overflow-hidden" data-aos="fade-right">
+                <img src="https://images.unsplash.com/photo-1586281380349-632531db7ed4?w=600" class="w-full h-56 object-cover" alt="CV Service">
+                <div class="p-8">
+                    <h3 class="text-2xl font-bold text-blue-400 mb-3">تصميم CV احترافي</h3>
+                    <p class="text-gray-400 mb-6 font-light">سير ذاتية متوافقة مع أنظمة الـ ATS وتصاميم عصرية تجذب أصحاب العمل.</p>
+                    <a href="https://wa.me/96179022469" class="text-blue-400 font-bold border-b border-blue-400 pb-1">اطلب الخدمة الآن</a>
+                </div>
+            </div>
+
+            <div class="card-custom overflow-hidden" data-aos="fade-left">
+                <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600" class="w-full h-56 object-cover" alt="Web Service">
+                <div class="p-8">
+                    <h3 class="text-2xl font-bold text-purple-400 mb-3">تطوير المواقع</h3>
+                    <p class="text-gray-400 mb-6 font-light">بناء مواقع إلكترونية سريعة، آمنة، وبتصاميم استثنائية تناسب هويتك.</p>
+                    <a href="https://wa.me/96179022469" class="text-purple-400 font-bold border-b border-purple-400 pb-1">اطلب الخدمة الآن</a>
+                </div>
+            </div>
+
+            <div class="card-custom overflow-hidden" data-aos="fade-right">
+                <img src="https://images.unsplash.com/photo-1455390582262-044cdead277a?w=600" class="w-full h-56 object-cover" alt="Content Service">
+                <div class="p-8">
+                    <h3 class="text-2xl font-bold text-green-400 mb-3">كتابة محتوى إبداعي</h3>
+                    <p class="text-gray-400 mb-6 font-light">كتابة نصوص تسويقية ومقالات متوافقة مع SEO لرفع ترتيب موقعك.</p>
+                    <a href="https://wa.me/96179022469" class="text-green-400 font-bold border-b border-green-400 pb-1">اطلب الخدمة الآن</a>
+                </div>
+            </div>
+
+            <div class="card-custom overflow-hidden" data-aos="fade-left">
+                <img src="https://images.unsplash.com/photo-1471107340929-a87cd0f5b5f3?w=600" class="w-full h-56 object-cover" alt="Poetry Service">
+                <div class="p-8">
+                    <h3 class="text-2xl font-bold text-red-400 mb-3">كتابة القصائد</h3>
+                    <p class="text-gray-400 mb-6 font-light">نصيغ مشاعرك ومناسباتك في أبيات شعرية راقية وبأسلوب أدبي رفيع.</p>
+                    <a href="https://wa.me/96179022469" class="text-red-400 font-bold border-b border-red-400 pb-1">اطلب الخدمة الآن</a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <footer class="py-12 bg-slate-900 border-t border-slate-800 text-center">
+        <p class="text-2xl font-black text-blue-500 mb-4">HMAB</p>
+        <p class="text-gray-500 mb-6">اتصل بنا: <span class="text-white">+961 79 022 469</span></p>
+        <div class="flex justify-center gap-6">
+            <a href="https://wa.me/96179022469" class="text-gray-400 hover:text-green-500 text-2xl transition"><i class="fab fa-whatsapp"></i></a>
+            <a href="#" class="text-gray-400 hover:text-blue-400 text-2xl transition"><i class="fab fa-instagram"></i></a>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // تفعيل الحركات عند التمرير
+        AOS.init({
+            duration: 1000,
+            once: true,
+            mirror: false
+        });
+    </script>
+</body>
+</html>
+
