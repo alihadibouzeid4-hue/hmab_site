@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>HMAB | عالم الإبداع الرقمي</title>
+<title>HMAB | Digital Power</title>
 
 <script src="https://cdn.tailwindcss.com"></script>
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
@@ -15,40 +15,56 @@ font-family:'Cairo',sans-serif;
 background:#0f172a;
 color:white;
 margin:0;
-scroll-behavior:smooth;
+overflow-x:hidden;
 }
 
-/* Navbar */
-nav{
-backdrop-filter:blur(10px);
-background:rgba(15,23,42,0.85);
+/* Animated Gradient Background */
+body::before{
+content:"";
+position:fixed;
+width:200%;
+height:200%;
+background:linear-gradient(45deg,#3b82f6,#9333ea,#06b6d4,#3b82f6);
+background-size:400% 400%;
+animation:gradientMove 15s ease infinite;
+z-index:-2;
+opacity:.08;
+}
+@keyframes gradientMove{
+0%{background-position:0% 50%;}
+50%{background-position:100% 50%;}
+100%{background-position:0% 50%;}
 }
 
-/* Hero Gradient */
+/* Hero */
 .hero{
 background:linear-gradient(rgba(15,23,42,.85),rgba(15,23,42,.85)),
-url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1000');
+url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1200');
 background-size:cover;
 background-position:center;
+background-attachment:fixed;
 }
 
-/* Card */
+/* Glass Navbar */
+nav{
+backdrop-filter:blur(12px);
+background:rgba(15,23,42,.7);
+}
+
+/* Card 3D */
 .card{
-background:#1e293b;
-border-radius:22px;
-overflow:hidden;
-transition:.4s;
-border:1px solid rgba(255,255,255,.08);
+background:rgba(30,41,59,.8);
+border-radius:25px;
+transition:transform .4s, box-shadow .4s;
+transform-style:preserve-3d;
 }
 .card:hover{
-transform:translateY(-10px);
-box-shadow:0 25px 50px rgba(0,0,0,.5);
-border-color:#3b82f6;
+transform:rotateY(8deg) rotateX(5deg) scale(1.05);
+box-shadow:0 30px 60px rgba(0,0,0,.6);
 }
 
 /* Buttons */
 .btn{
-display:inline-block;
 padding:12px 26px;
 border-radius:14px;
 font-weight:bold;
@@ -57,11 +73,30 @@ position:relative;
 overflow:hidden;
 }
 .btn:hover{
-transform:scale(1.05);
+transform:scale(1.08);
 }
 
-/* WhatsApp floating */
-.whatsapp-fixed{
+/* Ripple */
+.btn::after{
+content:"";
+position:absolute;
+width:0;
+height:0;
+background:rgba(255,255,255,.4);
+border-radius:50%;
+transform:translate(-50%,-50%);
+top:50%;
+left:50%;
+transition:.6s;
+}
+.btn:active::after{
+width:300px;
+height:300px;
+opacity:0;
+}
+
+/* Floating WhatsApp */
+.whatsapp{
 position:fixed;
 bottom:25px;
 right:25px;
@@ -73,27 +108,21 @@ display:flex;
 align-items:center;
 justify-content:center;
 font-size:30px;
-z-index:999;
+box-shadow:0 0 25px #25d366;
 transition:.3s;
-box-shadow:0 0 20px rgba(37,211,102,.6);
+z-index:999;
 }
-.whatsapp-fixed:hover{
-transform:scale(1.15);
-box-shadow:0 0 30px #25d366;
-}
-
-/* CTA section */
-.cta{
-background:linear-gradient(90deg,#3b82f6,#9333ea);
-border-radius:25px;
+.whatsapp:hover{
+transform:scale(1.2) rotate(10deg);
 }
 
-.fade-in{
+/* Fade */
+.fade{
 opacity:0;
-transform:translateY(30px);
-transition:.8s;
+transform:translateY(50px);
+transition:1s ease;
 }
-.fade-in.show{
+.fade.show{
 opacity:1;
 transform:translateY(0);
 }
@@ -102,100 +131,64 @@ transform:translateY(0);
 
 <body>
 
-<!-- Floating WhatsApp -->
 <a href="https://wa.me/96179022469?text=مرحباً%20أرغب%20بالتواصل%20مع%20HMAB"
-class="whatsapp-fixed text-white" target="_blank">
+class="whatsapp text-white" target="_blank">
 <i class="fab fa-whatsapp"></i>
 </a>
 
-<!-- Navbar -->
 <nav class="p-6 flex justify-between items-center sticky top-0 z-50">
-<div class="text-3xl font-black text-blue-500">HMAB</div>
-<a href="#services" class="bg-blue-600 px-6 py-2 rounded-xl font-bold hover:bg-blue-700 transition">
+<div class="text-3xl font-black text-blue-400">HMAB</div>
+<a href="#services" class="bg-blue-600 hover:bg-blue-700 px-6 py-2 rounded-xl font-bold transition">
 خدماتنا
 </a>
 </nav>
 
-<!-- Hero -->
-<section class="hero h-[85vh] flex flex-col justify-center items-center text-center px-6">
-<h1 class="text-5xl md:text-7xl font-black mb-6 fade-in">
-نحوّل أفكارك إلى <span class="text-blue-400">واقع رقمي</span>
+<section class="hero h-[90vh] flex flex-col justify-center items-center text-center px-6">
+<h1 class="text-6xl font-black mb-6 fade">
+نحوّل أفكارك إلى <span class="text-blue-400">قوة رقمية</span>
 </h1>
-<p class="text-gray-300 text-lg max-w-2xl fade-in">
-تصميم • تطوير • كتابة محتوى • إبداع بلا حدود
+<p class="text-gray-300 text-lg fade">
+إبداع • احتراف • سرعة • نتائج حقيقية
 </p>
-<a href="#services"
-class="mt-10 bg-blue-600 hover:bg-blue-700 btn fade-in">
+<a href="#services" class="mt-10 bg-blue-600 btn fade">
 ابدأ الآن
 </a>
 </section>
 
-<!-- Services -->
-<section id="services" class="max-w-6xl mx-auto px-6 py-20">
-<h2 class="text-4xl font-bold text-center mb-16">خدماتنا</h2>
+<section id="services" class="max-w-6xl mx-auto px-6 py-24">
+<h2 class="text-4xl font-bold text-center mb-16 fade">خدماتنا</h2>
 
-<div class="grid md:grid-cols-2 gap-10">
+<div class="grid md:grid-cols-2 gap-12">
 
-<!-- Service Card -->
-<div class="card fade-in">
-<img src="https://images.unsplash.com/photo-1586281380349-632531db7ed4?w=600" class="w-full h-56 object-cover">
-<div class="p-8">
+<div class="card p-8 fade">
 <h3 class="text-xl font-bold text-blue-400 mb-3">تصميم CV احترافي</h3>
 <p class="text-gray-400 mb-6">سيرة ذاتية عصرية ومتوافقة مع أنظمة التوظيف.</p>
-<button class="btn bg-blue-600 hover:bg-blue-700"
-onclick="sendWhatsApp('تصميم CV احترافي')">
-اطلب الخدمة
-</button>
-</div>
+<button class="btn bg-blue-600"
+onclick="sendWhatsApp('تصميم CV احترافي')">اطلب الخدمة</button>
 </div>
 
-<div class="card fade-in">
-<img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600" class="w-full h-56 object-cover">
-<div class="p-8">
+<div class="card p-8 fade">
 <h3 class="text-xl font-bold text-purple-400 mb-3">تطوير المواقع</h3>
-<p class="text-gray-400 mb-6">مواقع احترافية سريعة وآمنة.</p>
-<button class="btn bg-purple-600 hover:bg-purple-700"
-onclick="sendWhatsApp('تطوير المواقع')">
-اطلب الخدمة
-</button>
-</div>
+<p class="text-gray-400 mb-6">مواقع سريعة وآمنة بتصميم احترافي.</p>
+<button class="btn bg-purple-600"
+onclick="sendWhatsApp('تطوير المواقع')">اطلب الخدمة</button>
 </div>
 
-<div class="card fade-in">
-<img src="https://images.unsplash.com/photo-1455390582262-044cdead277a?w=600" class="w-full h-56 object-cover">
-<div class="p-8">
+<div class="card p-8 fade">
 <h3 class="text-xl font-bold text-green-400 mb-3">كتابة محتوى</h3>
-<p class="text-gray-400 mb-6">مقالات ونصوص تسويقية احترافية.</p>
-<button class="btn bg-green-600 hover:bg-green-700"
-onclick="sendWhatsApp('كتابة محتوى')">
-اطلب الخدمة
-</button>
-</div>
+<p class="text-gray-400 mb-6">مقالات ونصوص تسويقية متوافقة مع SEO.</p>
+<button class="btn bg-green-600"
+onclick="sendWhatsApp('كتابة محتوى')">اطلب الخدمة</button>
 </div>
 
-<div class="card fade-in">
-<img src="https://images.unsplash.com/photo-1471107340929-a87cd0f5b5f3?w=600" class="w-full h-56 object-cover">
-<div class="p-8">
+<div class="card p-8 fade">
 <h3 class="text-xl font-bold text-red-400 mb-3">كتابة قصائد</h3>
-<p class="text-gray-400 mb-6">قصائد ومناسبات بأسلوب أدبي راقٍ.</p>
-<button class="btn bg-red-600 hover:bg-red-700"
-onclick="sendWhatsApp('كتابة قصائد')">
-اطلب الخدمة
-</button>
-</div>
+<p class="text-gray-400 mb-6">صياغة قصائد ومناسبات بأسلوب راقٍ.</p>
+<button class="btn bg-red-600"
+onclick="sendWhatsApp('كتابة قصائد')">اطلب الخدمة</button>
 </div>
 
 </div>
-
-<!-- CTA -->
-<div class="cta text-center p-12 mt-20 fade-in">
-<h3 class="text-3xl font-black mb-6">جاهز تطوّر مشروعك؟</h3>
-<a href="https://wa.me/96179022469?text=مرحباً%20أرغب%20ببدء%20مشروع%20مع%20HMAB"
-class="bg-white text-black px-8 py-3 rounded-xl font-bold hover:scale-105 transition inline-block">
-تواصل معنا الآن
-</a>
-</div>
-
 </section>
 
 <footer class="text-center py-10 border-t border-gray-800 text-gray-500">
@@ -209,12 +202,11 @@ let url = "https://wa.me/96179022469?text=" + encodeURIComponent(message);
 window.open(url,"_blank");
 }
 
-/* Fade In Animation */
-const elements = document.querySelectorAll('.fade-in');
+/* Scroll Reveal */
+const fades = document.querySelectorAll('.fade');
 window.addEventListener('scroll',()=>{
-elements.forEach(el=>{
-const position = el.getBoundingClientRect().top;
-if(position < window.innerHeight - 100){
+fades.forEach(el=>{
+if(el.getBoundingClientRect().top < window.innerHeight - 100){
 el.classList.add('show');
 }
 });
