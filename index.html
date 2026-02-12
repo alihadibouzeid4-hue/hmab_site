@@ -25,8 +25,8 @@ transition:.4s;
 border:1px solid rgba(255,255,255,.1);
 }
 .card:hover{
-transform:translateY(-8px);
-box-shadow:0 20px 40px rgba(0,0,0,.4);
+transform:translateY(-10px);
+box-shadow:0 20px 50px rgba(0,0,0,.5);
 border-color:#3b82f6;
 }
 
@@ -37,26 +37,6 @@ border-radius:12px;
 font-weight:bold;
 transition:.3s;
 cursor:pointer;
-position:relative;
-overflow:hidden;
-}
-
-.btn::after{
-content:"";
-position:absolute;
-width:0%;
-height:100%;
-left:0;
-top:0;
-background:rgba(255,255,255,.15);
-transition:.4s;
-}
-.btn:hover::after{
-width:100%;
-}
-
-.glow{
-box-shadow:0 0 15px rgba(37,211,102,.6);
 }
 
 .whatsapp-fixed{
@@ -78,16 +58,47 @@ transition:.3s;
 transform:scale(1.1);
 box-shadow:0 0 20px #25d366;
 }
+
+/* Popup */
+.modal{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,.7);
+display:none;
+align-items:center;
+justify-content:center;
+z-index:1000;
+}
+
+.modal-content{
+background:#1e293b;
+padding:30px;
+border-radius:20px;
+text-align:center;
+max-width:400px;
+width:90%;
+animation:fadeIn .3s ease;
+}
+
+@keyframes fadeIn{
+from{opacity:0;transform:scale(.9);}
+to{opacity:1;transform:scale(1);}
+}
 </style>
 </head>
 
 <body>
 
+<!-- زر واتساب ثابت -->
 <a href="https://wa.me/96179022469?text=مرحباً%20أرغب%20بالتواصل%20مع%20HMAB"
-class="whatsapp-fixed text-white glow" target="_blank">
+class="whatsapp-fixed text-white" target="_blank">
 <i class="fab fa-whatsapp"></i>
 </a>
 
+<!-- Hero -->
 <section class="text-center py-20 px-6">
 <h1 class="text-5xl font-black mb-6">
 مشروع <span class="text-blue-400">HMAB</span>
@@ -97,55 +108,59 @@ class="whatsapp-fixed text-white glow" target="_blank">
 </p>
 </section>
 
+<!-- Services -->
 <section class="max-w-6xl mx-auto px-6 pb-20">
 <h2 class="text-3xl font-bold text-center mb-14">خدماتنا</h2>
 
 <div class="grid md:grid-cols-2 gap-10">
 
-<!-- Card Template -->
+<!-- CV -->
 <div class="card">
 <img src="https://images.unsplash.com/photo-1586281380349-632531db7ed4?w=600" class="w-full h-56 object-cover">
 <div class="p-6">
 <h3 class="text-xl font-bold text-blue-400 mb-3">تصميم CV احترافي</h3>
 <p class="text-gray-400 mb-6">سيرة ذاتية عصرية ومتوافقة مع أنظمة التوظيف.</p>
 <button class="btn bg-blue-600 hover:bg-blue-700"
-onclick="sendWhatsApp('تصميم CV احترافي')">
+onclick="openModal('تصميم CV احترافي')">
 اطلب الخدمة
 </button>
 </div>
 </div>
 
+<!-- Web -->
 <div class="card">
 <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600" class="w-full h-56 object-cover">
 <div class="p-6">
 <h3 class="text-xl font-bold text-purple-400 mb-3">تطوير المواقع</h3>
 <p class="text-gray-400 mb-6">مواقع احترافية سريعة وآمنة.</p>
 <button class="btn bg-purple-600 hover:bg-purple-700"
-onclick="sendWhatsApp('تطوير المواقع')">
+onclick="openModal('تطوير المواقع')">
 اطلب الخدمة
 </button>
 </div>
 </div>
 
+<!-- Content -->
 <div class="card">
 <img src="https://images.unsplash.com/photo-1455390582262-044cdead277a?w=600" class="w-full h-56 object-cover">
 <div class="p-6">
 <h3 class="text-xl font-bold text-green-400 mb-3">كتابة محتوى</h3>
 <p class="text-gray-400 mb-6">مقالات ونصوص تسويقية احترافية.</p>
 <button class="btn bg-green-600 hover:bg-green-700"
-onclick="sendWhatsApp('كتابة محتوى')">
+onclick="openModal('كتابة محتوى')">
 اطلب الخدمة
 </button>
 </div>
 </div>
 
+<!-- Poetry -->
 <div class="card">
 <img src="https://images.unsplash.com/photo-1471107340929-a87cd0f5b5f3?w=600" class="w-full h-56 object-cover">
 <div class="p-6">
 <h3 class="text-xl font-bold text-red-400 mb-3">كتابة قصائد</h3>
 <p class="text-gray-400 mb-6">قصائد ومناسبات بأسلوب أدبي راقٍ.</p>
 <button class="btn bg-red-600 hover:bg-red-700"
-onclick="sendWhatsApp('كتابة قصائد')">
+onclick="openModal('كتابة قصائد')">
 اطلب الخدمة
 </button>
 </div>
@@ -158,31 +173,40 @@ onclick="sendWhatsApp('كتابة قصائد')">
 © 2026 HMAB - جميع الحقوق محفوظة
 </footer>
 
+<!-- Modal -->
+<div class="modal" id="modal">
+<div class="modal-content">
+<h3 class="text-xl font-bold mb-4">تأكيد الطلب</h3>
+<p id="serviceName" class="mb-6 text-gray-300"></p>
+<button onclick="confirmOrder()" class="btn bg-green-600 hover:bg-green-700 w-full mb-3">
+تأكيد والتحويل إلى واتساب
+</button>
+<button onclick="closeModal()" class="btn bg-gray-600 hover:bg-gray-700 w-full">
+إلغاء
+</button>
+</div>
+</div>
+
 <script>
-function sendWhatsApp(service){
+let selectedService = "";
 
-let btn = event.target;
-let originalText = btn.innerText;
-let count = 2;
-
-btn.innerText = "جاري التحويل خلال " + count + "...";
-btn.disabled = true;
-
-let interval = setInterval(()=>{
-count--;
-btn.innerText = "جاري التحويل خلال " + count + "...";
-
-if(count === 0){
-clearInterval(interval);
-window.open(
-"https://wa.me/96179022469?text=مرحباً%20أرغب%20بالاستفسار%20عن%20خدمة%20" 
-+ encodeURIComponent(service),
-"_blank"
-);
-btn.innerText = originalText;
-btn.disabled = false;
+function openModal(service){
+selectedService = service;
+document.getElementById("serviceName").innerText =
+"سيتم تحويلك لطلب خدمة: " + service;
+document.getElementById("modal").style.display = "flex";
 }
-},1000);
+
+function closeModal(){
+document.getElementById("modal").style.display = "none";
+}
+
+function confirmOrder(){
+const phone = "96179022469";
+const message = `مرحباً، أرغب بالاستفسار عن خدمة ${selectedService} من HMAB.`;
+const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+window.open(url,"_blank");
+closeModal();
 }
 </script>
 
