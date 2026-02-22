@@ -1,222 +1,175 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="ar">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>HMAB | عالم الإبداع الرقمي</title>
-
-<script src="https://cdn.tailwindcss.com"></script>
-<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+<title>أفق | OFOK</title>
 
 <style>
-body{
-font-family:'Cairo',sans-serif;
-background:#0f172a;
-color:white;
-margin:0;
-overflow-x:hidden;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
 }
 
-/* Hero Intro */
-.hero{
-height:100vh;
-display:flex;
-flex-direction:column;
-align-items:center;
-justify-content:center;
-text-align:center;
-background:linear-gradient(to bottom,#0f172a,#111827);
-animation:fadeIn 1.5s ease;
+body {
+  background: #0f0f0f;
+  color: white;
+  text-align: center;
 }
 
-.hero h1{
-font-size:70px;
-font-weight:900;
-letter-spacing:4px;
-background:linear-gradient(45deg,#3b82f6,#9333ea);
--webkit-background-clip:text;
-color:transparent;
-animation:glowText 3s infinite alternate;
+header {
+  padding: 30px 20px;
+  background: #111;
+  font-size: 28px;
+  font-weight: bold;
 }
 
-.hero p{
-color:#9ca3af;
-margin-top:15px;
-font-size:18px;
+.subtitle {
+  opacity: 0.7;
+  margin-top: 5px;
+  font-size: 14px;
 }
 
-.start-btn{
-margin-top:40px;
-padding:14px 35px;
-background:linear-gradient(45deg,#3b82f6,#9333ea);
-border-radius:14px;
-font-weight:bold;
-cursor:pointer;
-transition:.3s;
+.services {
+  padding: 60px 20px;
 }
 
-.start-btn:hover{
-transform:scale(1.08);
-box-shadow:0 0 25px rgba(59,130,246,.6);
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+  max-width: 1000px;
+  margin: auto;
 }
 
-/* Services Section */
-.services{
-padding:80px 20px;
-display:none;
+.service {
+  background: #1a1a1a;
+  border-radius: 15px;
+  overflow: hidden;
+  transition: 0.3s;
 }
 
-.card{
-background:#1e293b;
-border-radius:20px;
-overflow:hidden;
-transition:.4s;
-border:1px solid rgba(255,255,255,.08);
+.service:hover {
+  transform: translateY(-5px);
 }
 
-.card:hover{
-transform:translateY(-10px);
-box-shadow:0 25px 50px rgba(0,0,0,.5);
-border-color:#3b82f6;
+.service-header {
+  padding: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  background: #151515;
+  font-size: 18px;
+  transition: 0.3s;
 }
 
-.card img{
-height:260px;
-width:100%;
-object-fit:cover;
-transition:.5s;
+.service-header:hover {
+  background: #222;
 }
 
-.card:hover img{
-transform:scale(1.05);
+.options {
+  max-height: 0;
+  overflow: hidden;
+  transition: 0.4s ease;
+  background: #141414;
 }
 
-.btn{
-display:inline-block;
-padding:10px 22px;
-border-radius:12px;
-font-weight:bold;
-transition:.3s;
-cursor:pointer;
-margin-top:15px;
+.options.active {
+  max-height: 500px;
+  padding: 20px;
 }
 
-.btn:hover{
-transform:scale(1.05);
+.options button {
+  margin: 6px;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 20px;
+  background: #00bcd4;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.3s;
 }
 
-.whatsapp-fixed{
-position:fixed;
-bottom:25px;
-right:25px;
-background:#25d366;
-width:65px;
-height:65px;
-border-radius:50%;
-display:flex;
-align-items:center;
-justify-content:center;
-font-size:30px;
-z-index:999;
-transition:.3s;
-}
-.whatsapp-fixed:hover{
-transform:scale(1.1);
-box-shadow:0 0 20px #25d366;
+.options button:hover {
+  background: white;
+  color: black;
 }
 
-@keyframes glowText{
-from{text-shadow:0 0 10px rgba(59,130,246,.5);}
-to{text-shadow:0 0 25px rgba(147,51,234,.9);}
-}
-
-@keyframes fadeIn{
-from{opacity:0;}
-to{opacity:1;}
+/* موبايل */
+@media (max-width: 768px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
 }
 </style>
 </head>
 
 <body>
 
-<a href="https://wa.me/96179022469?text=مرحباً%20أرغب%20بالتواصل%20مع%20HMAB"
-class="whatsapp-fixed text-white" target="_blank">
-<i class="fab fa-whatsapp"></i>
-</a>
+<header>
+  أفق | OFOK
+  <div class="subtitle">منتجات مخصصة بطباعة احترافية</div>
+</header>
 
-<!-- HERO -->
-<section class="hero">
-<h1>HMAB</h1>
-<p>نحوّل أفكارك إلى واقع رقمي احترافي</p>
-<button class="start-btn" onclick="showServices()">اكتشف خدماتنا</button>
+<section class="services">
+
+  <div class="grid">
+
+    <!-- صور خشب -->
+    <div class="service">
+      <div class="service-header" onclick="toggleOptions(this)">
+        صور خشب بمختلف المقاسات
+      </div>
+      <div class="options">
+        <button>15×21</button>
+        <button>20×30</button>
+        <button>30×40</button>
+        <button>40×60</button>
+        <button>50×70</button>
+        <button>60×90</button>
+      </div>
+    </div>
+
+    <!-- دفاتر -->
+    <div class="service">
+      <div class="service-header" onclick="toggleOptions(this)">
+        دفتر بصورة من اختيارك
+      </div>
+      <div class="options">
+        <button>A5</button>
+        <button>A6</button>
+      </div>
+    </div>
+
+    <!-- صورة A4 مجلدة -->
+    <div class="service">
+      <div class="service-header" onclick="toggleOptions(this)">
+        صورة A4 مجلدة
+      </div>
+      <div class="options">
+        <button>اطلب الآن</button>
+      </div>
+    </div>
+
+    <!-- دبابيس -->
+    <div class="service">
+      <div class="service-header" onclick="toggleOptions(this)">
+        دبابيس Pins بصورة من اختيارك
+      </div>
+      <div class="options">
+        <button>اطلب الآن</button>
+      </div>
+    </div>
+
+  </div>
+
 </section>
-
-<!-- SERVICES -->
-<section class="services" id="services">
-<h2 class="text-3xl font-bold text-center mb-14">خدماتنا</h2>
-
-<div class="grid md:grid-cols-2 gap-10 max-w-6xl mx-auto">
-
-<div class="card">
-<img loading="lazy" src="https://images.unsplash.com/photo-1586281380117-5a60ae2050cc?w=600&q=60">
-<div class="p-6">
-<h3 class="text-xl font-bold text-blue-400 mb-2">تصميم CV احترافي</h3>
-<p class="text-gray-400">سيرة ذاتية عصرية وجاهزة لأنظمة التوظيف العالمية.</p>
-<button class="btn bg-blue-600"
-onclick="sendWhatsApp('تصميم CV احترافي')">اطلب الخدمة</button>
-</div>
-</div>
-
-<div class="card">
-<img loading="lazy" src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=600&q=60">
-<div class="p-6">
-<h3 class="text-xl font-bold text-purple-400 mb-2">تطوير المواقع</h3>
-<p class="text-gray-400">مواقع احترافية سريعة وآمنة بتصميم عصري.</p>
-<button class="btn bg-purple-600"
-onclick="sendWhatsApp('تطوير المواقع')">اطلب الخدمة</button>
-</div>
-</div>
-
-<div class="card">
-<img loading="lazy" src="https://images.unsplash.com/photo-1455390582262-044cdead277a?w=600&q=60">
-<div class="p-6">
-<h3 class="text-xl font-bold text-green-400 mb-2">كتابة محتوى</h3>
-<p class="text-gray-400">مقالات ونصوص تسويقية احترافية مؤثرة.</p>
-<button class="btn bg-green-600"
-onclick="sendWhatsApp('كتابة محتوى')">اطلب الخدمة</button>
-</div>
-</div>
-
-<div class="card">
-<img loading="lazy" src="https://images.unsplash.com/photo-1507842217343-583bb7270b66?w=600&q=60">
-<div class="p-6">
-<h3 class="text-xl font-bold text-red-400 mb-2">كتابة قصائد</h3>
-<p class="text-gray-400">قصائد مخصصة للمناسبات بأسلوب أدبي راقٍ.</p>
-<button class="btn bg-red-600"
-onclick="sendWhatsApp('كتابة قصائد')">اطلب الخدمة</button>
-</div>
-</div>
-
-</div>
-</section>
-
-<footer class="text-center py-10 border-t border-gray-800 text-gray-500 mt-20">
-© 2026 HMAB - جميع الحقوق محفوظة
-</footer>
 
 <script>
-function showServices(){
-document.querySelector(".hero").style.display="none";
-document.getElementById("services").style.display="block";
-window.scrollTo(0,0);
-}
-
-function sendWhatsApp(service){
-window.open(
-"https://wa.me/96179022469?text=مرحباً%20أرغب%20بالاستفسار%20عن%20خدمة%20"+encodeURIComponent(service),
-"_blank"
-);
+function toggleOptions(element) {
+  const options = element.nextElementSibling;
+  options.classList.toggle("active");
 }
 </script>
 
