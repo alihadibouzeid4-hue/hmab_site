@@ -5,20 +5,21 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>أفق | OFOK</title>
 
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+
 <style>
 *{
   margin:0;
   padding:0;
   box-sizing:border-box;
-  font-family:Arial, sans-serif;
+  font-family:'Cairo', sans-serif;
 }
 
 body{
-  color:white;
-  text-align:center;
   background: linear-gradient(-45deg,#0f0f0f,#1a1a1a,#111827,#0f172a);
   background-size:400% 400%;
   animation: gradientBG 12s ease infinite;
+  color:white;
 }
 
 @keyframes gradientBG{
@@ -28,15 +29,17 @@ body{
 }
 
 header{
-  padding:40px 20px;
-  font-size:32px;
-  font-weight:bold;
+  text-align:center;
+  padding:60px 20px 30px;
 }
 
-.subtitle{
+header h1{
+  font-size:40px;
+}
+
+header p{
   opacity:0.7;
-  font-size:14px;
-  margin-top:5px;
+  margin-top:10px;
 }
 
 .section{
@@ -47,28 +50,36 @@ header{
   display:grid;
   grid-template-columns:repeat(2,1fr);
   gap:30px;
-  max-width:1100px;
+  max-width:1200px;
   margin:auto;
 }
 
-.service{
+.card{
   background:rgba(255,255,255,0.05);
-  backdrop-filter:blur(10px);
-  border-radius:15px;
+  backdrop-filter:blur(12px);
+  border-radius:20px;
   overflow:hidden;
-  transition:0.3s;
+  transition:0.4s;
   border:1px solid rgba(255,255,255,0.08);
 }
 
-.service:hover{
-  transform:translateY(-6px);
+.card:hover{
+  transform:translateY(-8px);
+  box-shadow:0 0 30px rgba(0,229,255,0.2);
 }
 
-.service-title{
+.card img{
+  width:100%;
+  height:220px;
+  object-fit:cover;
+}
+
+.card-content{
   padding:20px;
-  cursor:pointer;
-  font-weight:bold;
-  font-size:18px;
+}
+
+.card-content h3{
+  margin-bottom:10px;
 }
 
 .options{
@@ -78,17 +89,25 @@ header{
 }
 
 .options.active{
-  max-height:500px;
-  padding:15px;
+  max-height:400px;
+  margin-top:15px;
 }
 
 .options button{
-  margin:6px;
+  margin:5px;
   padding:8px 14px;
   border:none;
   border-radius:20px;
   cursor:pointer;
   font-weight:bold;
+}
+
+.toggle-btn{
+  margin-top:10px;
+  padding:8px 16px;
+  border:none;
+  border-radius:20px;
+  cursor:pointer;
 }
 
 @media(max-width:768px){
@@ -102,85 +121,91 @@ header{
 <body>
 
 <header>
-  أفق | OFOK
-  <div class="subtitle">طباعة ومنتجات مخصصة باحترافية</div>
+  <h1>أفق | OFOK</h1>
+  <p>منتجات مخصصة وطباعة احترافية</p>
 </header>
 
-<!-- ===== الخدمات القديمة (عدل أسماؤها إذا بدك) ===== -->
+<!-- الخدمات القديمة -->
 
 <section class="section">
-  <h2>خدماتنا</h2>
-
   <div class="grid">
 
-    <div class="service">
-      <div class="service-title">تصميم مواقع</div>
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1492724441997-5dc865305da7" alt="">
+      <div class="card-content">
+        <h3>تصميم مواقع</h3>
+      </div>
     </div>
 
-    <div class="service">
-      <div class="service-title">كتابة محتوى</div>
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1455390582262-044cdead277a" alt="">
+      <div class="card-content">
+        <h3>كتابة محتوى</h3>
+      </div>
     </div>
 
-    <div class="service">
-      <div class="service-title">قصائد مخصصة</div>
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1519681393784-d120267933ba" alt="">
+      <div class="card-content">
+        <h3>قصائد مخصصة</h3>
+      </div>
     </div>
 
-    <div class="service">
-      <div class="service-title">تصميم CV</div>
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1586281380349-632531db7ed4" alt="">
+      <div class="card-content">
+        <h3>تصميم CV</h3>
+      </div>
     </div>
 
   </div>
 </section>
 
-<!-- ===== المنتجات الجديدة ===== -->
+<!-- المنتجات الجديدة -->
 
 <section class="section">
-  <h2>منتجات أفق</h2>
-
   <div class="grid">
 
-    <!-- صور خشب -->
-    <div class="service">
-      <div class="service-title" onclick="toggle(this)">
-        صور خشب بمختلف المقاسات
-      </div>
-      <div class="options">
-        <button>15×21</button>
-        <button>20×30</button>
-        <button>30×40</button>
-        <button>40×60</button>
-        <button>50×70</button>
-        <button>60×90</button>
-      </div>
-    </div>
-
-    <!-- دفتر -->
-    <div class="service">
-      <div class="service-title" onclick="toggle(this)">
-        دفتر بصورة من اختيارك
-      </div>
-      <div class="options">
-        <button>A5</button>
-        <button>A6</button>
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1600891964599-f61ba0e24092" alt="">
+      <div class="card-content">
+        <h3>صور خشب</h3>
+        <button class="toggle-btn" onclick="toggle(this)">عرض المقاسات</button>
+        <div class="options">
+          <button>15×21</button>
+          <button>20×30</button>
+          <button>30×40</button>
+          <button>40×60</button>
+          <button>50×70</button>
+          <button>60×90</button>
+        </div>
       </div>
     </div>
 
-    <!-- صورة A4 -->
-    <div class="service">
-      <div class="service-title" onclick="toggle(this)">
-        صورة A4 مجلدة
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1512820790803-83ca734da794" alt="">
+      <div class="card-content">
+        <h3>دفتر بصورة من اختيارك</h3>
+        <button class="toggle-btn" onclick="toggle(this)">عرض المقاسات</button>
+        <div class="options">
+          <button>A5</button>
+          <button>A6</button>
+        </div>
       </div>
-      <div class="options">
+    </div>
+
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1587614382346-4ec70e388b28" alt="">
+      <div class="card-content">
+        <h3>صورة A4 مجلدة</h3>
         <button>اطلب الآن</button>
       </div>
     </div>
 
-    <!-- دبابيس -->
-    <div class="service">
-      <div class="service-title" onclick="toggle(this)">
-        دبابيس Pins بصورة من اختيارك
-      </div>
-      <div class="options">
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1604147495798-57beb5d6af73" alt="">
+      <div class="card-content">
+        <h3>دبابيس Pins</h3>
         <button>اطلب الآن</button>
       </div>
     </div>
@@ -189,8 +214,8 @@ header{
 </section>
 
 <script>
-function toggle(element){
-  const options = element.nextElementSibling;
+function toggle(btn){
+  const options = btn.nextElementSibling;
   options.classList.toggle("active");
 }
 </script>
