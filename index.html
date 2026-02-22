@@ -5,224 +5,206 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>أفق | OFOK</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
-
 <style>
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  font-family:'Cairo', sans-serif;
-}
-
 body{
-  background: linear-gradient(-45deg,#0f0f0f,#1a1a1a,#111827,#0f172a);
-  background-size:400% 400%;
-  animation: gradientBG 12s ease infinite;
-  color:white;
+    margin:0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(-45deg,#0f0c29,#302b63,#24243e,#000000);
+    background-size:400% 400%;
+    animation: bg 12s ease infinite;
+    color:white;
 }
 
-@keyframes gradientBG{
-  0%{background-position:0% 50%;}
-  50%{background-position:100% 50%;}
-  100%{background-position:0% 50%;}
+@keyframes bg{
+    0%{background-position:0% 50%;}
+    50%{background-position:100% 50%;}
+    100%{background-position:0% 50%;}
 }
 
 header{
-  text-align:center;
-  padding:50px 20px 20px;
+    text-align:center;
+    padding:30px;
 }
 
-header h1{
-  font-size:38px;
-}
-
-header p{
-  opacity:0.7;
-  margin-top:8px;
+h1{
+    font-size:40px;
 }
 
 .search-box{
-  text-align:center;
-  margin:30px 0;
+    text-align:center;
+    margin-bottom:30px;
 }
 
 .search-box input{
-  width:300px;
-  max-width:90%;
-  padding:12px;
-  border-radius:25px;
-  border:none;
-  outline:none;
+    padding:10px;
+    width:250px;
+    border-radius:8px;
+    border:none;
 }
 
-.section{
-  padding:40px 20px;
+.search-box button{
+    padding:10px 15px;
+    border:none;
+    border-radius:8px;
+    background:#00c6ff;
+    color:white;
+    cursor:pointer;
 }
 
-.grid{
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:20px;
-  max-width:1000px;
-  margin:auto;
+.services{
+    display:grid;
+    grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
+    gap:20px;
+    padding:20px;
 }
 
 .card{
-  background:rgba(255,255,255,0.05);
-  backdrop-filter:blur(12px);
-  border-radius:15px;
-  overflow:hidden;
-  transition:0.3s;
-  border:1px solid rgba(255,255,255,0.08);
+    background:rgba(255,255,255,0.08);
+    padding:20px;
+    border-radius:15px;
+    backdrop-filter:blur(8px);
+    transition:0.3s;
 }
 
 .card:hover{
-  transform:translateY(-6px);
+    transform:scale(1.05);
 }
 
-.card img{
-  width:100%;
-  height:180px;
-  object-fit:cover;
-}
-
-.card-content{
-  padding:15px;
-}
-
-.card-content h3{
-  margin-bottom:10px;
+.card h3{
+    margin-top:0;
 }
 
 .options{
-  max-height:0;
-  overflow:hidden;
-  transition:0.4s ease;
+    display:none;
+    margin-top:10px;
+    font-size:14px;
 }
 
-.options.active{
-  max-height:400px;
-  margin-top:10px;
+button.toggle{
+    margin-top:10px;
+    padding:7px 12px;
+    border:none;
+    border-radius:6px;
+    background:#ff416c;
+    color:white;
+    cursor:pointer;
 }
 
-.options button{
-  margin:5px;
-  padding:6px 12px;
-  border:none;
-  border-radius:20px;
-  cursor:pointer;
-}
-
-.not-found{
-  text-align:center;
-  margin-top:30px;
-  display:none;
-  opacity:0.8;
-}
-
-@media(max-width:768px){
-  .grid{
-    grid-template-columns:1fr;
-  }
+.notfound{
+    text-align:center;
+    margin-top:20px;
+    color:#ff4b2b;
 }
 </style>
 </head>
-
 <body>
 
 <header>
-  <h1>أفق | OFOK</h1>
-  <p>منتجات مخصصة وطباعة احترافية</p>
+    <h1>أفق | OFOK</h1>
+    <p>حلول رقمية و إبداعية باحتراف</p>
 </header>
 
 <div class="search-box">
-  <input type="text" id="searchInput" placeholder="ابحث عن خدمة..." onkeyup="searchService()">
+    <input type="text" id="searchInput" placeholder="ابحث عن خدمة...">
+    <button onclick="searchService()">بحث</button>
 </div>
 
-<section class="section">
-  <div class="grid" id="serviceGrid">
+<div id="resultMessage" class="notfound"></div>
 
-    <!-- صور خشب -->
+<section class="services" id="services">
+
+    <div class="card" data-name="تصميم مواقع">
+        <h3>تصميم مواقع</h3>
+        <p>موقع جاهز احترافي</p>
+        <strong>70$</strong>
+    </div>
+
+    <div class="card" data-name="كتابة محتوى">
+        <h3>كتابة محتوى</h3>
+        <p>محتوى تسويقي احترافي</p>
+        <strong>30$</strong>
+    </div>
+
+    <div class="card" data-name="قصائد">
+        <h3>قصائد خاصة</h3>
+        <p>قصيدة حسب الطلب</p>
+        <strong>50$</strong>
+    </div>
+
+    <div class="card" data-name="cv">
+        <h3>تصميم CV</h3>
+        <p>سيرة ذاتية احترافية</p>
+        <strong>15$</strong>
+    </div>
+
+    <div class="card" data-name="هدايا إلكترونية">
+        <h3>هدايا إلكترونية</h3>
+        <p>هدية باسم من تختار</p>
+        <strong>3$</strong>
+    </div>
+
     <div class="card" data-name="صور خشب">
-      <img src="https://images.unsplash.com/photo-1587614382346-4ec70e388b28" alt="">
-      <div class="card-content">
         <h3>صور خشب</h3>
-        <button onclick="toggle(this)">عرض المقاسات</button>
+        <p>اطبع صورتك على خشب</p>
+        <button class="toggle" onclick="toggleOptions(this)">عرض المقاسات</button>
         <div class="options">
-          <button>15×21</button>
-          <button>20×30</button>
-          <button>30×40</button>
-          <button>40×60</button>
-          <button>50×70</button>
-          <button>60×90</button>
+            15×21<br>
+            20×30<br>
+            30×40<br>
+            40×60<br>
+            50×70<br>
+            60×90
         </div>
-      </div>
     </div>
 
-    <!-- دفتر -->
-    <div class="card" data-name="دفتر">
-      <img src="https://images.unsplash.com/photo-1512820790803-83ca734da794" alt="">
-      <div class="card-content">
+    <div class="card" data-name="دفتر بصورة">
         <h3>دفتر بصورة من اختيارك</h3>
-        <button onclick="toggle(this)">عرض المقاسات</button>
+        <button class="toggle" onclick="toggleOptions(this)">عرض المقاسات</button>
         <div class="options">
-          <button>A5</button>
-          <button>A6</button>
+            A5<br>
+            A6
         </div>
-      </div>
     </div>
 
-    <!-- صورة A4 -->
-    <div class="card" data-name="صورة A4">
-      <img src="https://images.unsplash.com/photo-1600891964599-f61ba0e24092" alt="">
-      <div class="card-content">
+    <div class="card" data-name="صورة a4 مجلدة">
         <h3>صورة A4 مجلدة</h3>
-        <button>اطلب الآن</button>
-      </div>
+        <p>طباعة مجلدة فاخرة</p>
     </div>
 
-    <!-- دبابيس -->
-    <div class="card" data-name="دبابيس">
-      <img src="https://images.unsplash.com/photo-1604147495798-57beb5d6af73" alt="">
-      <div class="card-content">
+    <div class="card" data-name="pins">
         <h3>دبابيس Pins</h3>
-        <button>اطلب الآن</button>
-      </div>
+        <p>بصورة من اختيارك</p>
     </div>
-
-  </div>
-
-  <div class="not-found" id="notFound">
-    عذراً، هذه الخدمة غير متوفرة حالياً.  
-    قريباً إن شاء الله نضيفها 🤍
-  </div>
 
 </section>
 
 <script>
-function toggle(btn){
-  const options = btn.nextElementSibling;
-  if(options) options.classList.toggle("active");
+function toggleOptions(button){
+    let options = button.nextElementSibling;
+    options.style.display = options.style.display === "block" ? "none" : "block";
 }
 
 function searchService(){
-  const input = document.getElementById("searchInput").value.toLowerCase();
-  const cards = document.querySelectorAll(".card");
-  const notFound = document.getElementById("notFound");
-  let found = false;
+    let input = document.getElementById("searchInput").value.toLowerCase();
+    let cards = document.querySelectorAll(".card");
+    let found = false;
 
-  cards.forEach(card=>{
-    const name = card.getAttribute("data-name").toLowerCase();
-    if(name.includes(input)){
-      card.style.display="block";
-      found = true;
+    cards.forEach(card=>{
+        let name = card.getAttribute("data-name").toLowerCase();
+        if(name.includes(input)){
+            card.style.display="block";
+            found = true;
+        }else{
+            card.style.display="none";
+        }
+    });
+
+    let message = document.getElementById("resultMessage");
+    if(!found){
+        message.innerText="عذراً، الخدمة غير متوفرة حالياً. قريباً إن شاء الله نضيفها ❤️";
     }else{
-      card.style.display="none";
+        message.innerText="";
     }
-  });
-
-  notFound.style.display = found || input==="" ? "none" : "block";
 }
 </script>
 
