@@ -30,52 +30,65 @@ body{
 
 header{
   text-align:center;
-  padding:60px 20px 30px;
+  padding:50px 20px 20px;
 }
 
 header h1{
-  font-size:40px;
+  font-size:38px;
 }
 
 header p{
   opacity:0.7;
-  margin-top:10px;
+  margin-top:8px;
+}
+
+.search-box{
+  text-align:center;
+  margin:30px 0;
+}
+
+.search-box input{
+  width:300px;
+  max-width:90%;
+  padding:12px;
+  border-radius:25px;
+  border:none;
+  outline:none;
 }
 
 .section{
-  padding:60px 20px;
+  padding:40px 20px;
 }
 
 .grid{
   display:grid;
   grid-template-columns:repeat(2,1fr);
-  gap:30px;
-  max-width:1200px;
+  gap:20px;
+  max-width:1000px;
   margin:auto;
 }
 
 .card{
   background:rgba(255,255,255,0.05);
   backdrop-filter:blur(12px);
-  border-radius:20px;
+  border-radius:15px;
   overflow:hidden;
-  transition:0.4s;
+  transition:0.3s;
   border:1px solid rgba(255,255,255,0.08);
 }
 
 .card:hover{
-  transform:translateY(-8px);
-  box-shadow:0 0 30px rgba(0,229,255,0.2);
+  transform:translateY(-6px);
 }
 
 .card img{
   width:100%;
-  height:220px;
+  height:180px;
   object-fit:cover;
 }
 
 .card-content{
-  padding:20px;
+  padding:15px;
 }
 
 .card-content h3{
@@ -90,24 +103,22 @@ header p{
 
 .options.active{
   max-height:400px;
-  margin-top:15px;
+  margin-top:10px;
 }
 
 .options button{
   margin:5px;
-  padding:8px 14px;
+  padding:6px 12px;
   border:none;
   border-radius:20px;
   cursor:pointer;
-  font-weight:bold;
 }
 
-.toggle-btn{
-  margin-top:10px;
-  padding:8px 16px;
-  border:none;
-  border-radius:20px;
-  cursor:pointer;
+.not-found{
+  text-align:center;
+  margin-top:30px;
+  display:none;
+  opacity:0.8;
 }
 
 @media(max-width:768px){
@@ -125,52 +136,19 @@ header p{
   <p>منتجات مخصصة وطباعة احترافية</p>
 </header>
 
-<!-- الخدمات القديمة -->
+<div class="search-box">
+  <input type="text" id="searchInput" placeholder="ابحث عن خدمة..." onkeyup="searchService()">
+</div>
 
 <section class="section">
-  <div class="grid">
+  <div class="grid" id="serviceGrid">
 
-    <div class="card">
-      <img src="https://images.unsplash.com/photo-1492724441997-5dc865305da7" alt="">
-      <div class="card-content">
-        <h3>تصميم مواقع</h3>
-      </div>
-    </div>
-
-    <div class="card">
-      <img src="https://images.unsplash.com/photo-1455390582262-044cdead277a" alt="">
-      <div class="card-content">
-        <h3>كتابة محتوى</h3>
-      </div>
-    </div>
-
-    <div class="card">
-      <img src="https://images.unsplash.com/photo-1519681393784-d120267933ba" alt="">
-      <div class="card-content">
-        <h3>قصائد مخصصة</h3>
-      </div>
-    </div>
-
-    <div class="card">
-      <img src="https://images.unsplash.com/photo-1586281380349-632531db7ed4" alt="">
-      <div class="card-content">
-        <h3>تصميم CV</h3>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-<!-- المنتجات الجديدة -->
-
-<section class="section">
-  <div class="grid">
-
-    <div class="card">
-      <img src="https://images.unsplash.com/photo-1600891964599-f61ba0e24092" alt="">
+    <!-- صور خشب -->
+    <div class="card" data-name="صور خشب">
+      <img src="https://images.unsplash.com/photo-1587614382346-4ec70e388b28" alt="">
       <div class="card-content">
         <h3>صور خشب</h3>
-        <button class="toggle-btn" onclick="toggle(this)">عرض المقاسات</button>
+        <button onclick="toggle(this)">عرض المقاسات</button>
         <div class="options">
           <button>15×21</button>
           <button>20×30</button>
@@ -182,11 +160,12 @@ header p{
       </div>
     </div>
 
-    <div class="card">
+    <!-- دفتر -->
+    <div class="card" data-name="دفتر">
       <img src="https://images.unsplash.com/photo-1512820790803-83ca734da794" alt="">
       <div class="card-content">
         <h3>دفتر بصورة من اختيارك</h3>
-        <button class="toggle-btn" onclick="toggle(this)">عرض المقاسات</button>
+        <button onclick="toggle(this)">عرض المقاسات</button>
         <div class="options">
           <button>A5</button>
           <button>A6</button>
@@ -194,15 +173,17 @@ header p{
       </div>
     </div>
 
-    <div class="card">
-      <img src="https://images.unsplash.com/photo-1587614382346-4ec70e388b28" alt="">
+    <!-- صورة A4 -->
+    <div class="card" data-name="صورة A4">
+      <img src="https://images.unsplash.com/photo-1600891964599-f61ba0e24092" alt="">
       <div class="card-content">
         <h3>صورة A4 مجلدة</h3>
         <button>اطلب الآن</button>
       </div>
     </div>
 
-    <div class="card">
+    <!-- دبابيس -->
+    <div class="card" data-name="دبابيس">
       <img src="https://images.unsplash.com/photo-1604147495798-57beb5d6af73" alt="">
       <div class="card-content">
         <h3>دبابيس Pins</h3>
@@ -211,12 +192,37 @@ header p{
     </div>
 
   </div>
+
+  <div class="not-found" id="notFound">
+    عذراً، هذه الخدمة غير متوفرة حالياً.  
+    قريباً إن شاء الله نضيفها 🤍
+  </div>
+
 </section>
 
 <script>
 function toggle(btn){
   const options = btn.nextElementSibling;
-  options.classList.toggle("active");
+  if(options) options.classList.toggle("active");
+}
+
+function searchService(){
+  const input = document.getElementById("searchInput").value.toLowerCase();
+  const cards = document.querySelectorAll(".card");
+  const notFound = document.getElementById("notFound");
+  let found = false;
+
+  cards.forEach(card=>{
+    const name = card.getAttribute("data-name").toLowerCase();
+    if(name.includes(input)){
+      card.style.display="block";
+      found = true;
+    }else{
+      card.style.display="none";
+    }
+  });
+
+  notFound.style.display = found || input==="" ? "none" : "block";
 }
 </script>
 
