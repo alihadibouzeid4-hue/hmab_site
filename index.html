@@ -6,100 +6,94 @@
 <title>أفق | OFOK</title>
 
 <style>
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: Arial, sans-serif;
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:Arial, sans-serif;
 }
 
-body {
-  background: #0f0f0f;
-  color: white;
-  text-align: center;
+body{
+  color:white;
+  text-align:center;
+  background: linear-gradient(-45deg,#0f0f0f,#1a1a1a,#111827,#0f172a);
+  background-size:400% 400%;
+  animation: gradientBG 12s ease infinite;
 }
 
-header {
-  padding: 30px 20px;
-  background: #111;
-  font-size: 28px;
-  font-weight: bold;
+@keyframes gradientBG{
+  0%{background-position:0% 50%;}
+  50%{background-position:100% 50%;}
+  100%{background-position:0% 50%;}
 }
 
-.subtitle {
-  opacity: 0.7;
-  margin-top: 5px;
-  font-size: 14px;
+header{
+  padding:40px 20px;
+  font-size:32px;
+  font-weight:bold;
 }
 
-.services {
-  padding: 60px 20px;
+.subtitle{
+  opacity:0.7;
+  font-size:14px;
+  margin-top:5px;
 }
 
-.grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 30px;
-  max-width: 1000px;
-  margin: auto;
+.section{
+  padding:60px 20px;
 }
 
-.service {
-  background: #1a1a1a;
-  border-radius: 15px;
-  overflow: hidden;
-  transition: 0.3s;
+.grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:30px;
+  max-width:1100px;
+  margin:auto;
 }
 
-.service:hover {
-  transform: translateY(-5px);
+.service{
+  background:rgba(255,255,255,0.05);
+  backdrop-filter:blur(10px);
+  border-radius:15px;
+  overflow:hidden;
+  transition:0.3s;
+  border:1px solid rgba(255,255,255,0.08);
 }
 
-.service-header {
-  padding: 20px;
-  font-weight: bold;
-  cursor: pointer;
-  background: #151515;
-  font-size: 18px;
-  transition: 0.3s;
+.service:hover{
+  transform:translateY(-6px);
 }
 
-.service-header:hover {
-  background: #222;
+.service-title{
+  padding:20px;
+  cursor:pointer;
+  font-weight:bold;
+  font-size:18px;
 }
 
-.options {
-  max-height: 0;
-  overflow: hidden;
-  transition: 0.4s ease;
-  background: #141414;
+.options{
+  max-height:0;
+  overflow:hidden;
+  transition:0.4s ease;
 }
 
-.options.active {
-  max-height: 500px;
-  padding: 20px;
+.options.active{
+  max-height:500px;
+  padding:15px;
 }
 
-.options button {
-  margin: 6px;
-  padding: 10px 15px;
-  border: none;
-  border-radius: 20px;
-  background: #00bcd4;
-  cursor: pointer;
-  font-weight: bold;
-  transition: 0.3s;
+.options button{
+  margin:6px;
+  padding:8px 14px;
+  border:none;
+  border-radius:20px;
+  cursor:pointer;
+  font-weight:bold;
 }
 
-.options button:hover {
-  background: white;
-  color: black;
-}
-
-/* موبايل */
-@media (max-width: 768px) {
-  .grid {
-    grid-template-columns: 1fr;
+@media(max-width:768px){
+  .grid{
+    grid-template-columns:1fr;
   }
 }
 </style>
@@ -109,16 +103,45 @@ header {
 
 <header>
   أفق | OFOK
-  <div class="subtitle">منتجات مخصصة بطباعة احترافية</div>
+  <div class="subtitle">طباعة ومنتجات مخصصة باحترافية</div>
 </header>
 
-<section class="services">
+<!-- ===== الخدمات القديمة (عدل أسماؤها إذا بدك) ===== -->
+
+<section class="section">
+  <h2>خدماتنا</h2>
+
+  <div class="grid">
+
+    <div class="service">
+      <div class="service-title">تصميم مواقع</div>
+    </div>
+
+    <div class="service">
+      <div class="service-title">كتابة محتوى</div>
+    </div>
+
+    <div class="service">
+      <div class="service-title">قصائد مخصصة</div>
+    </div>
+
+    <div class="service">
+      <div class="service-title">تصميم CV</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ===== المنتجات الجديدة ===== -->
+
+<section class="section">
+  <h2>منتجات أفق</h2>
 
   <div class="grid">
 
     <!-- صور خشب -->
     <div class="service">
-      <div class="service-header" onclick="toggleOptions(this)">
+      <div class="service-title" onclick="toggle(this)">
         صور خشب بمختلف المقاسات
       </div>
       <div class="options">
@@ -131,9 +154,9 @@ header {
       </div>
     </div>
 
-    <!-- دفاتر -->
+    <!-- دفتر -->
     <div class="service">
-      <div class="service-header" onclick="toggleOptions(this)">
+      <div class="service-title" onclick="toggle(this)">
         دفتر بصورة من اختيارك
       </div>
       <div class="options">
@@ -142,9 +165,9 @@ header {
       </div>
     </div>
 
-    <!-- صورة A4 مجلدة -->
+    <!-- صورة A4 -->
     <div class="service">
-      <div class="service-header" onclick="toggleOptions(this)">
+      <div class="service-title" onclick="toggle(this)">
         صورة A4 مجلدة
       </div>
       <div class="options">
@@ -154,7 +177,7 @@ header {
 
     <!-- دبابيس -->
     <div class="service">
-      <div class="service-header" onclick="toggleOptions(this)">
+      <div class="service-title" onclick="toggle(this)">
         دبابيس Pins بصورة من اختيارك
       </div>
       <div class="options">
@@ -163,11 +186,10 @@ header {
     </div>
 
   </div>
-
 </section>
 
 <script>
-function toggleOptions(element) {
+function toggle(element){
   const options = element.nextElementSibling;
   options.classList.toggle("active");
 }
